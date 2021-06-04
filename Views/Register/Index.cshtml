@@ -1,0 +1,73 @@
+﻿@model ModelTrial.Models.User
+
+@{
+    ViewData["Title"] = "Register";
+}
+
+@* <h1>Register</h1>
+
+    <hr /> 
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="IndexPost" method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Username" class="control-label"></label>
+                <input asp-for="Username" class="form-control" />
+                <span asp-validation-for="Username" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Email" class="control-label"></label>
+                <input asp-for="Email" class="form-control" />
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Password" class="control-label"></label>
+                <input type="password" asp-for="Password" class="form-control" />
+                <span asp-validation-for="Password" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Register" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div> *@
+
+<div class="card-body mx-auto" style="max-width: 400px;">
+    <article class="card-body">
+        <h4 class="card-title text-center mb-4 mt-1">Sign Up</h4>
+        <hr>
+        <form asp-action="IndexPost" method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group input-group">
+                <div class="input-group-prepend">
+                    <span class="input-group-text"> <i class="fa fa-user"></i> </span>
+                </div>
+                <input asp-for="Username" class="form-control" placeholder="Full name"/>
+                <span asp-validation-for="Username" class="text-danger"></span>
+            </div>
+            <div class="form-group input-group">
+                <div class="input-group-prepend">
+                <span class="input-group-text"> <i class="fa fa-envelope"></i> </span>
+                </div>
+                <input asp-for="Email" class="form-control" placeholder="Email address" />
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+            <div class="form-group input-group">
+                <div class="input-group-prepend">
+                <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
+                </div>
+                <input type="password" asp-for="Password" class="form-control" placeholder="Create password" />
+                <span asp-validation-for="Password" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Register" class="btn btn-secondary btn-block" />
+            </div>
+            <p class="text-center">Have an account? <a asp-action="Index" asp-controller="Login" style="color: gray;">Log In</a> </p>  
+        </form>
+    </article>
+</div>
+
+@section Scripts {
+@{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

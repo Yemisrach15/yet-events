@@ -1,0 +1,76 @@
+﻿@model ModelTrial.Models.Event
+@*@model ModelTrial.Models.Tag*@
+@* @model ModelTrial.Models.User *@
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<div class="container">
+    <div class="row">
+        <div class="col-8 e-img">
+            <img class="img-fluid w-100" src="@Html.DisplayFor(model => model.ImageUrl)" alt="img">
+        </div>
+        <div class="col-4 e-summary">
+            <h3 class="text-darkgrey mb-4">@Html.ValueFor(model => model.Date, "{0:MMM}")<br>@Html.ValueFor(model => model.Date, "{0:dd}")</h3>
+            <h3 class="e-title">@Html.DisplayFor(model => model.Title)</h3>
+            <p class="text-grey">by @Html.DisplayFor(model => model.CreatedByUser.Username)</p>
+        </div>
+    </div>
+    <div class="row mt-3">
+        <div class="col-8"></div>
+        <div class="col-4">
+            <button class="btn e-btn w-100 register-btn">Register</button>
+            <form class="register-event-form" method="post" asp-action="Register" asp-controller="Events">
+                <input type="hidden"  name="eventId" value="@Html.DisplayFor(model => model.Id)"/>
+            </form>
+        </div>
+    </div>
+    <hr class="w-100 mb-5">
+    <div class="container row mb-5 px-8">
+        <div class="col-8">
+            <h4 class="mb-4">About this event</h4>
+            <p class="text-grey">
+                @Html.DisplayFor(model => model.Description)
+            </p>
+        </div>
+        <div class="col-4 px-5">
+            <div>
+                <h6 class="mb-2">Date and time</h6>
+                <p style="margin-bottom: 0.2em;">@Html.ValueFor(model => model.Date, "{0:ddd, dd MMMM yyyy}")</p>
+                <p>@Html.ValueFor(model => model.Date, "{0:hh:mm tt}")</p>
+            </div>
+            <div class="mt-5">
+                <h6>Location</h6>
+                <p>@Html.DisplayFor(model => model.Location)</p>
+            </div>
+
+        </div>
+    </div>
+    <div class="container mb-5 px-8">
+        <h6 class="mb-4">Tags</h6>
+        <div>
+            <span class="e-tag mr-1">Online Event</span>
+            <span class="e-tag mr-1">Free</span>
+            <span class="e-tag">Online</span>
+        </div>
+    </div>
+    <div class="container px-8">
+        <h6 class="mb-3">Share with friends</h6>
+        <div class="row px-4">
+            <div class="col-1">
+                <i class="share-icon fab fa-facebook-f"></i>
+            </div>
+            <div class="col-1">
+                <i class="share-icon fab fa-linkedin-in"></i>
+            </div>
+            <div class="col-1">
+                <i class="share-icon fab fa-twitter"></i>
+            </div>
+            <div class="col-1">
+                <i class="share-icon fas fa-envelope"></i>
+            </div>
+        </div>
+    </div>
+</div>    
+

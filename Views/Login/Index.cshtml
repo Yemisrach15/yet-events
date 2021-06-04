@@ -1,0 +1,40 @@
+﻿@model ModelTrial.Models.User
+
+@{
+    ViewData["Title"] = "Login";
+}
+
+<div class="card-body mx-auto" style="max-width: 400px;">
+    <article class="card-body">
+        <h4 class="card-title text-center mb-4 mt-1">Sign In</h4>
+          <hr>
+        <form asp-action="IndexPost" method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text"> <i class="fa fa-user"></i></span>
+                    </div>
+                    <input asp-for="Username" class="form-control" placeholder="Username" />
+                    <span asp-validation-for="Username" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
+                    </div>
+                    <input type="password" asp-for="Password" class="form-control" placeholder="********" />
+                    <span asp-validation-for="Password" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Login" class="btn btn-secondary btn-block" />
+            </div>
+        </form>
+    </article>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

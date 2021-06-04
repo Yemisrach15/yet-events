@@ -1,0 +1,12 @@
+﻿@{
+    Layout = "_Layout";
+}
+
+@if (TempData.Peek("UserName") == null)
+{
+    Layout = "_Layout";
+}
+else
+{
+    Layout = "_LayoutLoggedIn";
+}

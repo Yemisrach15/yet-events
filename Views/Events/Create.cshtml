@@ -1,0 +1,55 @@
+﻿@model ModelTrial.Models.Event
+@using Microsoft.AspNetCore.Http;
+@using Newtonsoft.Json;
+@using ModelTrial.Models;
+
+@{
+    ViewData["Title"] = "Create";
+}
+@section customCSS{
+    <link rel="stylesheet" href="~/css/create.css" />
+}
+
+<div class="container">
+    <h1 style="text-align: center;">Create Event</h1>
+    <div class="row create-form" style="justify-content: center;">
+        <div class="col-md-4">
+            <form asp-action="Create" asp-controller="Events">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="form-group">
+                    <label asp-for="Title" class="control-label"></label>
+                    <input asp-for="Title" class="form-control"/>
+                    <span asp-validation-for="Title" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Date" class="control-label"></label>
+                    <input asp-for="Date" class="form-control"/>
+                    <span asp-validation-for="Date" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Location" class="control-label"></label>
+                    <input asp-for="Location" class="form-control"/>
+                    <span asp-validation-for="Location" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Description" class="control-label"></label>
+                    <input asp-for="Description" class="form-control"/>
+                    <span asp-validation-for="Description" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="ImageUrl" class="control-label">Image Link</label>
+                    <input asp-for="ImageUrl" class="form-control"/>
+                    <span asp-validation-for="ImageUrl" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="Create" class="btn btn-primary" style="background: #d1410c;
+    border: none;" />
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+@{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

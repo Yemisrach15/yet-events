@@ -1,0 +1,51 @@
+﻿@model IEnumerable<ModelTrial.Models.Event>
+
+@{
+    ViewData["Title"] = "Home";
+}
+
+@section customCSS{
+    <link rel="stylesheet" href="~/css/index.css" />
+}
+
+<div class="col-xxl-8">
+    <div class="row flex-lg-row-reverse align-items-center">
+        <div class="col-lg-6">
+            <img src="https://images.unsplash.com/photo-1566954979172-eaba308acdf0?ixid=MnwxMjA3fDB8MHxzZWFyY2h8NHx8ZXhoaWJpdGlvbnxlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" class="d-block mx-lg-auto img-fluid hero-img" alt="">
+        </div>
+        <div class="col-lg-6">
+            <h1 class="display-5 fw-bold lh-1 mb-3">Events for when you're free</h1>
+            <p class="lead">Make plans.</p>
+            <div class="d-grid gap-2 d-md-flex justify-content-md-start mt-5">
+                <a asp-action="Index" asp-controller="Register"><button type="button" class="btn btn-red btn-lg px-4 mr-2" style="background-color: rgb(34, 29, 29) ; color: white;">Sign-up</button></a>
+                <a href="#events"><button type="button" class="btn btn-outline-red btn-lg px-4" style="background-color: rgb(34, 29, 29); color: white;">Browse events</button></a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="album py-5">
+    <div class="container" id="events">
+        <h3 class="mb-5">Online Events</h3>
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+            @foreach (var item in Model)
+            {
+                <div class="col-4 mb-5 col-lg-3">
+                    <div class="card card-shadow" style="height: 100%;">
+                        <a asp-action="Details" asp-route-id="@item.Id" asp-controller="Events" style="height: 50%;">
+                            <img src="@item.ImageUrl" class="card-img" style="height: 100%; object-fit: cover;">
+                        </a>
+
+                        <div class="card-body" style="height: 50%;">
+                            <h5 class="card-title">@item.Title</h5>
+                            <p class="card-text text-orange">
+                                @item.Date.ToString("ddd, MMM dd, yyyy hh:mm tt")
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+

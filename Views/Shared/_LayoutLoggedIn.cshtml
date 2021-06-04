@@ -1,0 +1,91 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>YetEvents - @ViewData["Title"]</title>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css">
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css">
+    @RenderSection("customCSS", required: false)
+</head>
+
+<body>
+    <header class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4 px-5 nav-header">
+        <a asp-action="Index" asp-controller="Home" style="margin-right: 5%;"><h1 class="text-orange">YetEvents</h1></a>
+        <div class="d-flex align-items-center" style="flex: 1;">
+            <form class="w-100 me-3" asp-action="Search" asp-controller="Home" method="get">
+                <input type="search" name="q" class="form-control search-input" placeholder="Search events">
+            </form>
+        </div>
+        <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0" style="flex: 1;">
+            <li class="nav-link px-2 link-dark mr-3">
+                <a asp-action="Tickets" asp-controller="Home" class="text-black " style="display: flex; flex-direction: column;">
+                <div style="text-align: center;"><i class="fas fa-ticket-alt"></i></div>
+                <div class="nav-link-text">Tickets</div>
+            </a></li>
+            <li class="nav-link px-2 link-dark mr-3">
+                <a asp-action="Create" asp-controller="Events" class="text-black " style="display: flex; flex-direction: column;">
+                <div style="text-align: center;"><i class="fas fa-plus"></i></div>
+                <div class="nav-link-text">Create Event</div>
+            </a></li>
+            <li class="nav-link px-2 link-dark mr-3">
+                <a asp-action="Manage" asp-controller="Events" class="text-black " style="display: flex; flex-direction: column;">
+                <div style="text-align: center;"><i class="fas fa-tasks"></i></div>
+                <div class="nav-link-text">Manage Events</div>
+            </a></li>
+            <li class="nav-link px-2 link-dark mr-3"><a asp-action="Logout" asp-controller="Login" class="text-black " style="display: flex; flex-direction: column;">
+                <div style="text-align: center;"><i class="fas fa-sign-out-alt"></i></div>
+                <div class="nav-link-text">Logout</div>    
+            </a></li>
+            <li class="nav-link px-2 link-dark mr-2 mr-3" style="display: flex; flex-direction: column;">
+                <div style="text-align: center;"><i class="far fa-user"></i></div>
+                <div class="nav-link-text">@TempData.Peek("UserName")</div>
+            </li>
+        </ul>
+    </header>
+
+
+    <div class="container">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+
+    <footer class="pt-4 my-md-5 pt-md-5 border-top">
+        <div class="row w-100 text-center">
+            <div class="col col-md">
+                <h5>Features</h5>
+                <ul class="list-unstyled text-small">
+                    <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">Cool stuff</a></li>
+                    <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">Random feature</a></li>
+                    <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">Team feature</a></li>
+                </ul>
+            </div>
+            <div class="col col-md">
+                <h5>Resources</h5>
+                <ul class="list-unstyled text-small">
+                    <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">Resource</a></li>
+                    <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">Resource name</a></li>
+                    <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">Final resource</a></li>
+                </ul>
+            </div>
+            <div class="col col-md">
+                <h5>About</h5>
+                <ul class="list-unstyled text-small">
+                    <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">Team</a></li>
+                    <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">Locations</a></li>
+                    <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">Privacy</a></li>
+                    <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">Terms</a></li>
+                </ul>
+            </div>
+        </div>
+    </footer>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+
+</html>

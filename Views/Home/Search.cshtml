@@ -1,0 +1,38 @@
+﻿@model IEnumerable<ModelTrial.Models.Event>
+
+@{
+    ViewData["Title"] = "Search Result";
+}
+
+@section customCSS{
+    <link rel="stylesheet" href="~/css/search.css" />
+}
+
+@if (Model.Any())
+{
+    <div class="search-results">
+        @foreach (var item in Model)
+        {
+        <a asp-action="Details" asp-route-id="@item.Id" asp-controller="Events">
+            <div class="result">
+                <div class="result-desc col-8">
+                    <h2 class="title">@Html.DisplayFor(modelItem => item.Title)</h2>
+                    <p class="time">@Html.ValueFor(modelItem => item.Date, "{0:ddd, dd MMMM yyyy}")</p>
+                    <p class="location">@Html.DisplayFor(modelItem => item.Location)</p>
+                </div>
+                <div class="result-img col-4 mt-1">
+                    <img class="img-fluid" src="@Html.DisplayFor(modelItem => item.ImageUrl)" alt="">
+                </div>
+            </div>
+        </a>
+        }
+    </div>
+
+}
+            else
+            {
+                <div class="search-results">
+                    <h3 class="title mt-5">No result. Try searching again with another keyword.</h3>
+                </div>
+            } 
+
